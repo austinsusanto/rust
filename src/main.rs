@@ -11,7 +11,9 @@ fn main() {
 
     for stream in listener.incoming() {
         let stream = stream.unwrap();
-        handle_connection(stream); 
+        thread::spawn(move || {
+            handle_connection(stream);
+        });
     }
 }
 
@@ -39,4 +41,5 @@ fn handle_connection(mut stream: TcpStream) {
     let response = format!("{status_line}\r\nContent-Length:{length}\r\n\r\n{contents}");
     
     stream.write_all(response.as_bytes()).unwrap();
+    stream.flush().unwrap();
 }
