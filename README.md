@@ -15,3 +15,7 @@ From the tutorial, we can conclude that Rust's is a complicated programming lang
 ## Commit 4
 
 From this tutorial, we can see that with unoptimized and time consuming code, the response of the request will be loaded slowly. This problem gets worst with the single threaded server approach which slows down other request that doesn't even run the slow part of the program.
+
+## Commit 5
+
+From this tutorial, we've added the use of multithreading which serves every request individually without waiting for other request to be completed. This helps small requests to be responded quickly without being slowed down by big requests.
